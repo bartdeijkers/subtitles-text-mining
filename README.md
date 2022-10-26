@@ -1,12 +1,14 @@
 # subtitles-text-mining
 
 ---
- Title: Subtitles text-mining using Python
- Author: Bart Deijkers (bartdeijkers@gmail.com)
- Date: 2022-10-19
+
+- Title: Subtitles text-mining using Python
+- Author: Bart Deijkers (bartdeijkers@gmail.com)
+- Date: 2022-10-19
+
 ---
 
-# Introduction
+## Introduction
 
 Subtitles of the NPO are available starting 2015 via the NPO Start website.
 Only the Dutch subtitles were used for this study.
@@ -15,7 +17,7 @@ Subtitles normally do not correspond 100% to the actual spoken text, but are equ
 
 The subtitle analysis in this repository does not take into account pause padding (***) or silence markings for the hearing impaired.
 
-# Helpful Tools
+## Helpful Tools
 
 To convert vtt files yourself a script is included.
 Currently the script supports single file conversion or npostart batch conversion utilizing the npostart.nl video tiles metadata objects
@@ -42,7 +44,7 @@ Example:
 python .\scripts\vtt2json.py --file_in subtitlefile.vtt
 ```
 
-# Sources
+## Sources
 
 - <http://www.natalialevshina.com/Documents/Olomouc_subtitles.pdf>
   
