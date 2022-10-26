@@ -3,7 +3,7 @@
 ---
 
 - Title: Subtitles text-mining with Python
-- Author: Bart Deijkers (bartdeijkers@gmail.com)
+- Author: Bart Deijkers
 - Date: 2022-10-19
 
 ---
