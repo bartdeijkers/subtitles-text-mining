@@ -2,7 +2,7 @@
 
 ---
 
-- Title: Subtitles text-mining using Python
+- Title: Subtitles text-mining with Python
 - Author: Bart Deijkers (bartdeijkers@gmail.com)
 - Date: 2022-10-19
 
@@ -46,9 +46,17 @@ python .\scripts\vtt2json.py --file_in subtitlefile.vtt
 
 ## Sources
 
+- <https://www.bigdata-expo.nl/nl/programma/text-mining-steeds-belangrijker-om-goed-om-te-kunnen-gaan-met-steeds-meer>
+  
+  Lecture (in dutch) regarding text-mining by Prof dr ir Jan C. Scholtes.
+
+- Applied Text Analysis with Python (ISBN: 978-1-491-96304-3)
+  
+  Authors: Benjamin Bengfort, Rebecca Bilbro, and Tony Ojeda
+
 - <http://www.natalialevshina.com/Documents/Olomouc_subtitles.pdf>
   
   Discusses methods to analyse vtt subtitles
   - average word lengths
   - correlations between wordform frequencies in each register
-  - Principal Component Analysis (similar to Biber's multidimensional analysis)
+  - Principal Component Analysis (similar to Biber's multidimensional analysis)  

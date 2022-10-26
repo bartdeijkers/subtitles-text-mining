@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+'''
+    VTT to JSON converter
+    Author: Bart Deijkers
+    Created: 2022-10-20
+
+    Usage: python vtt2json.py { --file_in <vtt file> | --batch_in <json file> } --out_path <output path> --method <file|npostart>
+'''
+
 import argparse
 import os
 from pathlib import Path, PurePosixPath
@@ -24,14 +32,17 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+
 def do_system(arg):
-	print(f"==== running: {arg}")
-	err = os.system(arg)
-	if err:
-		print("FATAL: command failed")
-		sys.exit(err)
-        
+    print(f"==== running: {arg}")
+    err = os.system(arg)
+    if err:
+        print("FATAL: command failed")
+        sys.exit(err)
+
 # Convert the subtitles
+
+
 def vtt2json(filename):
     vtt_json = []
     for caption in webvtt.read(filename):
@@ -62,7 +73,7 @@ def get_vtt(id, url, out_path):
 
 
 def set_json(id, json_data, out_path):
-    Path(out_path + "/json").mkdir(parents=True, exist_ok=True)    
+    Path(out_path + "/json").mkdir(parents=True, exist_ok=True)
     with open(out_path + "/json/" + id + ".json", "w") as f:
         json.dump(json_data, f, indent=4)
         f.close()
@@ -83,7 +94,7 @@ def load_batch_npostart(json_data, out_path):
                 set_json(id, json_data, out_path)
             else:
                 print("Could not process subtitle ID: " + id)
-        f.close()        
+        f.close()
 
 
 if __name__ == "__main__":
@@ -101,4 +112,4 @@ if __name__ == "__main__":
         id = args.file_in.split(".")[0]
         json_data = vtt2json(args.file_in)
         set_json(id, json_data, args.out_path)
-
+        
