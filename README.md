@@ -20,7 +20,7 @@ The subtitle analysis in this repository does not take into account pause paddin
 ## Usage
 
 1. Open subtitle_analysis.ipynb in jupyter.
-2. Download and install the requirements as defined in step 1.
+2. Download and install the requirements defined in the first code cell.
 3. download and convert the subtitles using the scripts/vtt2json.py script if needed and place the json files in ./data/json/ folder
 4. Run all cells in the jupyter notebook to analyse the provided data
 
