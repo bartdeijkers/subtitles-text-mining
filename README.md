@@ -59,4 +59,4 @@ python .\scripts\vtt2json.py --file_in subtitlefile.vtt
   Discusses methods to analyse vtt subtitles
   - average word lengths
   - correlations between wordform frequencies in each register
-  - Principal Component Analysis (similar to Biber's multidimensional analysis)  
+  - Principal Component Analysis (similar to Biber's multidimensional analysis)
