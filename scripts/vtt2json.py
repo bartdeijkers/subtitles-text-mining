@@ -10,12 +10,12 @@
 '''
 
 import argparse
-import os
-from pathlib import Path, PurePosixPath
 import json
-import requests
 import os
 import sys
+from pathlib import Path, PurePosixPath
+
+import requests
 import webvtt
 
 

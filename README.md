@@ -24,6 +24,14 @@ The subtitle analysis in this repository does not take into account pause paddin
 3. download and convert the subtitles using the scripts/vtt2json.py script if needed and place the json files in ./data/json/ folder
 4. Run all cells in the jupyter notebook to analyse the provided data
 
+## Docker support
+
+For setting up the development system, a docker-compose.yml is included. To run (assuming docker is installed on the local system) type the following in your terminal:
+
+```sh
+compose up
+```
+
 ## Helpful Tools
 
 To convert vtt files yourself a script is included.

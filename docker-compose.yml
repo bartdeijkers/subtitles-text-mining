@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  tensorflow-notebook:
+    build: 
+      context: .
+    ports:
+      - 8888:8888
+    volumes:
+      - text-mining:/home/jovyan/work
+volumes:
+  text-mining:
