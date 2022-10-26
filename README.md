@@ -17,6 +17,13 @@ Subtitles normally do not correspond 100% to the actual spoken text, but are equ
 
 The subtitle analysis in this repository does not take into account pause padding (***) or silence markings for the hearing impaired.
 
+## Usage
+
+1. Open subtitle_analysis.ipynb in jupyter.
+2. Download and install the requirements as defined in step 1.
+3. download and convert the subtitles using the scripts/vtt2json.py script if needed and place the json files in ./data/json/ folder
+4. Run all cells in the jupyter notebook to analyse the provided data
+
 ## Helpful Tools
 
 To convert vtt files yourself a script is included.
