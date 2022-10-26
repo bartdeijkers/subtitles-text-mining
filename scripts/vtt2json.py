@@ -6,7 +6,7 @@
     Author: Bart Deijkers
     Created: 2022-10-20
 
-    Usage: python vtt2json.py { --file_in <vtt file> | --batch_in <json file> } --out_path <output path> --method <file|npostart>
+    Usage: python vtt2json.py --file_in <vtt|json file> --out_path <output path> --method <file|npostart>
 '''
 
 import argparse
@@ -23,8 +23,6 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Download and convert vtt subtitles to json format")
     parser.add_argument("--file_in", help="Input vtt file")
-    parser.add_argument("--batch_in", default="meta.json",
-                        help="Specify the url of the file to parse")
     parser.add_argument("--method", default="file", choices=[
                         "file", "npostart"], help="Determine the method to parse the data")
     parser.add_argument("--out_path", default="", help="output path")
@@ -100,16 +98,14 @@ def load_batch_npostart(json_data, out_path):
 if __name__ == "__main__":
     args = parse_args()
 
-    if args.batch_in == "" and args.file_in == "":
-        print("Error: no input file specified")
+    if args.method == "" and args.file_in == "":
+        print("Error: no input file and/or method specified")
         sys.exit(1)
 
-    if args.batch_in != "":
+    if args.file_in != "":
         if args.method == "npostart":
-            load_batch_npostart(args.batch_in, args.out_path)
-
-    if args.method == "file" and args.file_in != "":
-        id = args.file_in.split(".")[0]
-        json_data = vtt2json(args.file_in)
-        set_json(id, json_data, args.out_path)
-        
+            load_batch_npostart(args.file_in, args.out_path)
+        if args.method == "file":
+            id = args.file_in.split(".")[0]
+            json_data = vtt2json(args.file_in)
+            set_json(id, json_data, args.out_path)       
