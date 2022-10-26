@@ -31,8 +31,15 @@ For setting up the development system, a docker-compose.yml is included. To run 
 ```sh
 docker compose -f "docker-compose.yml" up -d --build 
 ```
+
 You can use the jupyter environment in your browser using the url provided in the docker console after loading the container.
-The contents of the repository directory are copied to the container volume. 
+The next terminal line requests the credentials and url to the jupyter environment from the log:
+
+```sh
+docker-compose logs -t -f --tail 5
+```
+
+Note: The contents of the repository directory are copied to the container volume.
 
 ## Helpful Tools
 
