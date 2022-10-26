@@ -26,10 +26,10 @@ The subtitle analysis in this repository does not take into account pause paddin
 
 ## Docker support
 
-For setting up the development system, a docker-compose.yml is included. To run (assuming docker is installed on the local system) type the following in your terminal:
+For setting up the development system, a docker-compose.yml is included. To run (assuming docker is installed and running on the local system) type the following in your terminal:
 
 ```sh
-compose up
+docker compose -f "docker-compose.yml" up -d --build 
 ```
 
 ## Helpful Tools
