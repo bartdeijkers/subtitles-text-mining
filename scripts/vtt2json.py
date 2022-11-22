@@ -81,6 +81,11 @@ def set_json(id, json_data, out_path):
 def load_batch_npostart(json_data, out_path):
     with open(json_data, "r") as f:
         data = json.load(f)
+
+        # check if tiles node exists and make it the root node
+        if "tiles" in data:
+            data = data["tiles"]
+
         for item in data:
             id = item["id"]
 
