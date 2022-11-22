@@ -55,7 +55,7 @@ Copy the json data from firebug into a seperate .json file and feed this to the 
 Example:
 
 ```sh
-python .\scripts\vtt2json.py --file_in meta.json  --method npostart 
+python .\scripts\vtt2json.py --file_in meta.json --output_path .\data --method npostart 
 ```
 
 ### Single file example
@@ -65,7 +65,7 @@ For subtitle files (in vtt format) it is also possible to run the vtt2json.py sc
 Example:
 
 ```sh
-python .\scripts\vtt2json.py --file_in subtitlefile.vtt --method file
+python .\scripts\vtt2json.py --file_in subtitlefile.vtt --output_path .\data --method file
 ```
 
 ## Sources
