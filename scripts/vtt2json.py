@@ -6,7 +6,7 @@
     Author: Bart Deijkers
     Created: 2022-10-20
 
-    Usage: python vtt2json.py --file_in <vtt|json file> --out_path <output path> --method <file|npostart>
+    Usage: python vtt2json.py --file_in <vtt|json file> --output_path <output path> --method <file|npostart>
 '''
 
 import argparse
@@ -25,7 +25,7 @@ def parse_args():
     parser.add_argument("--file_in", help="Input vtt file")
     parser.add_argument("--method", default="file", choices=[
                         "file", "npostart"], help="Determine the method to parse the data")
-    parser.add_argument("--out_path", default="", help="output path")
+    parser.add_argument("--output_path", default="", help="output path")
 
     args = parser.parse_args()
     return args
@@ -50,15 +50,15 @@ def vtt2json(filename):
     return vtt_json
 
 
-def get_vtt(id, url, out_path):
+def get_vtt(id, url, output_path):
     try:
         # create subfolder for vtt files
-        Path(out_path+"/vtt").mkdir(parents=True, exist_ok=True)
+        Path(output_path+"/vtt").mkdir(parents=True, exist_ok=True)
 
         # download vtt file
         response = requests.get(url)
         if response.status_code == 200:
-            with open(out_path+"/vtt/"+id + ".vtt", "wb") as f:
+            with open(output_path+"/vtt/"+id + ".vtt", "wb") as f:
                 f.write(response.content)
                 f.close()
                 return True
@@ -70,15 +70,15 @@ def get_vtt(id, url, out_path):
         return False
 
 
-def set_json(id, json_data, out_path):
-    Path(out_path + "/json").mkdir(parents=True, exist_ok=True)
-    with open(out_path + "/json/" + id + ".json", "w") as f:
+def set_json(id, json_data, output_path):
+    Path(output_path + "/json").mkdir(parents=True, exist_ok=True)
+    with open(output_path + "/json/" + id + ".json", "w") as f:
         json.dump(json_data, f, indent=4)
         f.close()
 
 
 # load npostart metadata json file and get id value from each item
-def load_batch_npostart(json_data, out_path):
+def load_batch_npostart(json_data, output_path):
     with open(json_data, "r") as f:
         data = json.load(f)
 
@@ -91,10 +91,10 @@ def load_batch_npostart(json_data, out_path):
 
             # get vtt file from url
             url = "https://assetscdn.npostart.nl/subtitles/original/nl/" + id + ".vtt"
-            result = get_vtt(id, url, out_path)
+            result = get_vtt(id, url, output_path)
             if result:
-                json_data = vtt2json(out_path + "/vtt/" + id + ".vtt")
-                set_json(id, json_data, out_path)
+                json_data = vtt2json(output_path + "/vtt/" + id + ".vtt")
+                set_json(id, json_data, output_path)
             else:
                 print("Could not process subtitle ID: " + id)
         f.close()
@@ -109,8 +109,8 @@ if __name__ == "__main__":
 
     if args.file_in != "":
         if args.method == "npostart":
-            load_batch_npostart(args.file_in, args.out_path)
+            load_batch_npostart(args.file_in, args.output_path)
         if args.method == "file":
             id = args.file_in.split(".")[0]
             json_data = vtt2json(args.file_in)
-            set_json(id, json_data, args.out_path)       
+            set_json(id, json_data, args.output_path)       
