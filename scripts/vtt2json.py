@@ -86,6 +86,7 @@ def load_batch_npostart(json_data, output_path):
         if "tiles" in data:
             data = data["tiles"]
 
+        #count items in data and print to console
         for item in data:
             id = item["id"]
 
@@ -95,6 +96,9 @@ def load_batch_npostart(json_data, output_path):
             if result:
                 json_data = vtt2json(output_path + "/vtt/" + id + ".vtt")
                 set_json(id, json_data, output_path)
+                cur_item = str(data.index(item)+1)
+                total_items = str(len(data))
+                print("Processed subtitle ID " + id + " (" + cur_item + "/" + total_items + ")")
             else:
                 print("Could not process subtitle ID: " + id)
         f.close()
